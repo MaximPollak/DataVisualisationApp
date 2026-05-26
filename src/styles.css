@@ -135,7 +135,7 @@ body {
   transform: translateY(-50%);
 }
 
-.chart-placeholder {
+/* .chart-placeholder {
   height: 260px;
   margin-bottom: 32px;
   border: 1px dashed #b8b8b0;
@@ -148,7 +148,7 @@ body {
 
   color: #777;
   font-size: 0.9rem;
-}
+} */
 
 .text-block h2 {
   margin: 0;

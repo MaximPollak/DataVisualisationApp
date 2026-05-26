@@ -1,49 +1,50 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="A scroll-driven data visualization narrative about smartphone usage and addiction."
-    />
-    <title>You Might Be Addicted Without Even Knowing It</title>
-  </head>
-  <body>
-    <div id="app">
-      <section class="hero-section">
-        <div class="phone-frame" id="phone">
-          <div class="phone-island"></div>
 
-          <div class="phone-screen">
-            <div class="chat" id="chat">
-              <div class="message other">This is INSANE...</div>
-              <div class="message other">Just checked my screentime report and the numbers are through the roof!</div>
-              <div class="message other">
-                You might want to check yours too<br><br>
-                <a href="#" id="start-story">screentime-report</a>
-              </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="A scroll-driven data visualization narrative about smartphone usage and addiction." />
+  <title>You Might Be Addicted Without Even Knowing It</title>
+</head>
+
+<body>
+  <div id="app">
+    <section class="hero-section">
+      <div class="phone-frame" id="phone">
+        <div class="phone-island"></div>
+
+        <div class="phone-screen">
+          <div class="chat" id="chat">
+            <div class="message other">This is INSANE...</div>
+            <div class="message other">Just checked my screentime report and the numbers are through the roof!</div>
+            <div class="message other">
+              You might want to check yours too<br><br>
+              <a href="#" id="start-story">screentime-report</a>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="side-content" id="side-content">
-          <div class="chart-placeholder">
-            Chart placeholder
-          </div>
-
-          <div class="text-block">
-            <h2>Your phone is probably taking more time than you think.</h2>
-            <p>
-              Screen time often feels harmless in the moment, but the numbers tell a clearer story.
-              A few short checks can turn into hours across the day.
-            </p>
-          </div>
+      <div class="side-content" id="side-content">
+        <div class="chart-placeholder">
+          Screen Time vs Sleep Chart
         </div>
-      </section>
 
-      <!-- <p class="loading-state">Loading...</p> -->
-    </div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+        <div class="text-block">
+          <h2>Your phone is probably taking more time than you think.</h2>
+          <p>
+            Screen time often feels harmless in the moment, but the numbers tell a clearer story.
+            A few short checks can turn into hours across the day.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- <p class="loading-state">Loading...</p> -->
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
 </html>

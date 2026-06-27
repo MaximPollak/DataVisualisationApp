@@ -12,42 +12,97 @@
 <body>
   <div id="app">
     <section class="hero-section">
-      <div class="phone-frame" id="phone">
-        <div class="phone-island"></div>
+      <div class="phone-stage" id="phone-stage">
+        <div class="phone-frame" id="phone">
+          <div class="phone-island"></div>
 
-        <div class="phone-screen">
-          <div class="chat" id="chat">
-            <div class="message other">This is INSANE...</div>
-            <div class="message other">Just checked my screentime report and the numbers are through the roof!</div>
-            <div class="message other">
-              You might want to check yours too<br><br>
-              <a href="#" id="start-story">screentime-report</a>
+          <div class="phone-screen">
+            <div class="chat" id="chat">
+              <div class="message other">This is INSANE...</div>
+              <div class="message other">Just checked my screentime report and the numbers are through the roof!</div>
+              <div class="message other">
+                You might want to check yours too<br><br>
+                <a href="#" id="start-story">screentime-report</a>
+              </div>
             </div>
           </div>
+        </div>
+
+        <div class="scroll-hint" aria-hidden="true">
+          <div class="scroll-hint__label">Scroll to continue</div>
+          <div class="scroll-hint__arrow">↓</div>
         </div>
       </div>
 
       <div class="side-content" id="side-content">
+        <p class="chart-kicker" id="chart-kicker">First signal</p>
+        <p class="chart-caption" id="chart-caption">Each dot is one person. The chart compares sleep hours with daily screen time.</p>
+
         <div class="chart-placeholder">
-          Screen Time vs Sleep Chart
         </div>
 
         <div class="text-block">
-          <h2>Your phone is probably taking more time than you think.</h2>
+          <h2 id="insight-title">Your phone is probably taking more time than you think.</h2>
           <p>
-            Screen time often feels harmless in the moment, but the numbers tell a clearer story.
+            <span id="insight-copy">Screen time often feels harmless in the moment, but the numbers tell a clearer story.
             A few short checks can turn into hours across the day.
+            </span>
           </p>
         </div>
+
       </div>
 
-      <div class="scroll-hint" aria-hidden="true">
-          <div class="scroll-hint__label">Scroll to continue</div>
-          <div class="scroll-hint__arrow">↓</div>
-        </div>
       </section>
 
       <section class="scroll-step" id="scroll-step">
+    </section>
+
+    <section class="ending-section" id="ending-section">
+      <div class="ending-content">
+        <div class="ending-hero">
+          <div class="ending-copy">
+            <p class="chart-kicker">Final reflection</p>
+            <h2>You might not feel addicted. But the hours still add up.</h2>
+            <p>
+              The story is not about blaming people for using their phones. It is about noticing when short checks become automatic, and when automatic habits start taking time back from sleep, focus, and real rest.
+            </p>
+          </div>
+
+          <form class="compare-form" id="compare-form">
+            <h3>Compare yourself</h3>
+            <p>Enter your numbers. The result will compare you with the dataset.</p>
+            <div class="compare-grid">
+              <label>
+                Screen time
+                <input id="input-screen-time" type="number" min="0" max="24" step="0.1" value="6.5">
+              </label>
+              <label>
+                Sleep
+                <input id="input-sleep" type="number" min="0" max="24" step="0.1" value="7">
+              </label>
+              <label>
+                Notifications
+                <input id="input-notifications" type="number" min="0" max="500" step="1" value="90">
+              </label>
+              <label>
+                App opens
+                <input id="input-app-opens" type="number" min="0" max="500" step="1" value="110">
+              </label>
+            </div>
+            <button type="submit">Show me in the data</button>
+          </form>
+        </div>
+
+        <div class="ending-result">
+          <div class="ending-chart" id="ending-chart"></div>
+          <section class="reflection-card" id="reflection-card" aria-live="polite">
+            <p class="reflection-label">Your result</p>
+            <h3 id="reflection-title">Add your numbers to compare yourself.</h3>
+            <p id="reflection-copy">Your result will show how your screen time compares with the dataset average.</p>
+            <dl class="comparison-list" id="comparison-list"></dl>
+          </section>
+        </div>
+      </div>
     </section>
 
     <!-- <p class="loading-state">Loading...</p> -->

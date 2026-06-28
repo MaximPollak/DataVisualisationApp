@@ -43,42 +43,36 @@ const scrollStepBaseHeight = 260;
 
 const storyScenes = [
   {
-    kicker: 'First signal',
-    title: 'Your phone is probably taking more time than you think.',
-    copy: 'Screen time often feels harmless in the moment, but the numbers tell a clearer story. A few short checks can turn into hours across the day.',
-    caption: 'Each dot is one person. The chart compares sleep hours with daily screen time.',
+    kicker: 'First clue',
+    title: 'Sleep is the first thing that gets hit.',
+    copy: 'An expected pattern, not a surprising one. More screen time lines up with less sleep, and the slope is steeper than the obvious version of this story would suggest.',
+    caption: 'Each dot is one person. Sleep hours vs daily screen time.',
     chart: {
       type: 'scatter',
       startAtZero: true,
       xAxisLabel: 'Sleep (h)',
       yAxisLabel: 'Screen time (h)',
-      dataAccessor: {
-        x: 'sleep_hours',
-        y: 'daily_screen_time_hours',
-      },
+      dataAccessor: { x: 'sleep_hours', y: 'daily_screen_time_hours' },
     },
   },
   {
-    kicker: 'Attention loop',
-    title: 'Notifications can pull you back before you even decide to open the phone.',
-    copy: 'When notification counts rise, app opens often rise with them. That repeated checking pattern is one of the clearest signs of attention being interrupted.',
-    caption: 'Each dot is one person. This shows whether people with more notifications also open apps more often.',
+    kicker: 'Not so simple',
+    title: "Notifications don't predict app opens as cleanly as expected.",
+    copy: 'The straight-line theory does not hold up. There is a mild trend, but plenty of people get hammered with notifications and barely open anything, while some low-notification people are on their phones constantly anyway.',
+    caption: 'Each dot is one person. Notifications per day vs app opens per day.',
     chart: {
       type: 'scatter',
       startAtZero: true,
       xAxisLabel: 'Notifications per day',
       yAxisLabel: 'App opens per day',
-      dataAccessor: {
-        x: 'notifications_per_day',
-        y: 'app_opens_per_day',
-      },
+      dataAccessor: { x: 'notifications_per_day', y: 'app_opens_per_day' },
     },
   },
   {
     kicker: 'Risk groups',
-    title: 'Average screen time climbs when the addiction label becomes more serious.',
-    copy: 'A bar chart is clearer here because addiction level is categorical. Instead of plotting every person, we compare the average screen time of each group.',
-    caption: 'Groups are addiction labels from the dataset. Each bar shows the average daily screen time for that group.',
+    title: 'It shows up much clearer once people are grouped by addiction level.',
+    copy: 'This is where the noise disappears. Each step up the scale adds roughly the same proportion again, and the severe group ends up using a little over double the screen time of the mild group. Whatever is driving it, it is not subtle once the groups are split out.',
+    caption: 'Groups are addiction labels from the dataset. Average daily screen time per group.',
     chart: {
       type: 'bar',
       groupBy: 'addiction_level',
@@ -90,9 +84,9 @@ const storyScenes = [
   },
   {
     kicker: 'Stress signal',
-    title: 'Stress is easier to compare as groups than as a cloud of points.',
-    copy: 'For stress levels, a grouped average keeps the chart readable. The question becomes simple: which stress group receives more notification pressure?',
-    caption: 'Groups are stress levels from the dataset. Each bar shows average notifications per day.',
+    title: 'Stress splits the same clean way, and notifications are the difference.',
+    copy: 'This chart is the strongest evidence for the notifications theory. People with high stress receive almost double the notifications of people with low stress. Noisy at the individual level, but unmistakable once grouped.',
+    caption: 'Groups are stress levels from the dataset. Average notifications per day per group.',
     chart: {
       type: 'bar',
       groupBy: 'stress_level',
@@ -104,89 +98,101 @@ const storyScenes = [
   },
   {
     kicker: 'Weekend drift',
-    title: 'Weekends can quietly stretch daily usage even further.',
-    copy: 'Weekend screen time gives the story a different rhythm. It shows how usage changes when the structure of a normal day loosens.',
-    caption: 'Each dot is one person. The chart compares regular daily screen time with weekend screen time.',
+    title: 'Weekends do not offer a break from any of it.',
+    copy: 'If anything, the pattern gets worse. People who already have high screen time on weekdays climb even higher on weekends. No routine, no ceiling.',
+    caption: 'Each dot is one person. Daily screen time vs weekend screen time.',
     chart: {
       type: 'scatter',
       startAtZero: true,
       xAxisLabel: 'Daily screen time (h)',
       yAxisLabel: 'Weekend screen time (h)',
-      dataAccessor: {
-        x: 'daily_screen_time_hours',
-        y: 'weekend_screen_time',
-      },
+      dataAccessor: { x: 'daily_screen_time_hours', y: 'weekend_screen_time' },
     },
   },
   {
-    kicker: 'Final warning',
-    title: 'The goal is not panic. It is noticing the pattern early enough to change it.',
-    copy: 'Awareness starts when the habit becomes measurable. Once the pattern is visible, it becomes easier to question what the phone is taking from the day.',
-    caption: 'Each dot is one person. This checks whether more gaming time appears alongside less sleep.',
+    kicker: 'Final takeaway',
+    title: 'The thing actually being traded away is sleep.',
+    copy: 'Noisier than the opening chart, but the direction does not flip. More gaming time still lines up with less sleep. Different angle, same cost.',
+    caption: 'Each dot is one person. Gaming hours vs sleep hours.',
     chart: {
       type: 'scatter',
       startAtZero: true,
       xAxisLabel: 'Gaming (h)',
       yAxisLabel: 'Sleep (h)',
-      dataAccessor: {
-        x: 'gaming_hours',
-        y: 'sleep_hours',
-      },
+      dataAccessor: { x: 'gaming_hours', y: 'sleep_hours' },
     },
   },
 ];
 
 const scrollTriggeredMessages = [
   {
-    text: 'It is not only the total time. It is how often the phone pulls you back.',
-    type: 'other',
-  },
-  {
-    text: 'So the checks themselves matter, not just the hours?',
+    text: "ok this is kind of scary honestly",
     type: 'user',
   },
   {
-    text: 'Exactly. Let’s compare notifications with how often apps get opened.',
+    text: "right, more screen time = less sleep. we both kinda knew that one already, but damn the slope is steep",
+    type: 'other',
+    sceneIndex: 0,
+  },
+  {
+    text: "yeah that part's not surprising. let's check notifications, see if that's actually the trigger behind it",
+    type: 'user',
+  },
+  {
+    text: "hm wait, this one's actually messier than I expected",
     type: 'other',
     sceneIndex: 1,
   },
   {
-    text: 'That looks like a habit loop: notification, open, repeat.',
+    text: "yeah no clean pattern at all, some people get blasted with notifications and barely open anything",
     type: 'user',
+    sceneIndex: 1,
   },
   {
-    text: 'But for addiction levels, a scatterplot is not the clearest choice.',
+    text: "guess it's not that simple on its own. maybe it only shows up once it's actually a real habit",
     type: 'other',
   },
   {
-    text: 'Since those are categories, we should compare groups instead.',
-    type: 'other',
+    text: "ok let's split people by addiction level then and see",
+    type: 'user',
     sceneIndex: 2,
   },
   {
-    text: 'The average makes the pattern easier to read.',
+    text: "ok yeah THAT'S clear. mild to severe and the screen time basically doubles each step",
+    type: 'other',
+  },
+  {
+    text: "so the individual point by point thing was noisy, but the groups aren't. what about stress, same deal?",
     type: 'user',
   },
   {
-    text: 'Stress is another category, so we keep the grouped comparison.',
+    text: "yep, high stress group is getting almost double the notifications of the low stress group",
     type: 'other',
     sceneIndex: 3,
   },
   {
-    text: 'High stress plus constant notifications sounds exhausting.',
+    text: "so maybe it's not stress causing the phone thing, maybe the notifications are causing the stress",
     type: 'user',
   },
   {
-    text: 'Now let’s switch back to a relationship chart for weekday vs weekend behavior.',
+    text: "could be. ok, one more, what happens on weekends when nobody has anywhere to be",
     type: 'other',
+  },
+  {
+    text: "oh that's rough, it just goes even higher when the routine's gone",
+    type: 'user',
     sceneIndex: 4,
   },
   {
-    text: 'Weekends are where the extra time can hide.',
+    text: "no real day off from it apparently",
     type: 'other',
   },
   {
-    text: 'And the final question is what gets traded away when usage keeps growing.',
+    text: "ok last one, the thing i actually care about. gaming vs sleep",
+    type: 'user',
+  },
+  {
+    text: "yeah this one's noisier than the first chart, but it doesn't flip. more gaming, less sleep, still",
     type: 'other',
     sceneIndex: 5,
   },
@@ -244,7 +250,7 @@ startStoryLink.addEventListener('click', event => {
 
   setTimeout(() => {
     appendChatMessage(
-      'I had no idea it was this much until I saw the graph.',
+      'I thought I was just using it casually, but this already feels way more serious than I expected.',
       'user'
     );
   }, 700);

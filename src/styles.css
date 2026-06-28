@@ -312,18 +312,32 @@ body.story-started {
 
 .ending-result {
   display: grid;
-  grid-template-columns: minmax(420px, 1fr) minmax(320px, 0.72fr);
-  gap: 1.2rem;
-  align-items: start;
-  margin-top: 1.2rem;
+  grid-template-columns: minmax(280px, 0.6fr) minmax(0, 1.4fr);
+  grid-template-areas:
+    "form chart"
+    "result result";
+  gap: 1rem;
+  align-items: stretch;
+  margin-top: 1.4rem;
+}
+
+.compare-form--stacked {
+  grid-area: form;
+  min-height: 100%;
 }
 
 .ending-chart {
+  grid-area: chart;
+  min-height: 420px;
   padding: 1rem;
   border: 1px solid #d6d2c7;
   border-radius: 28px;
   background: rgba(255, 255, 255, 0.78);
   box-shadow: 0 24px 70px rgba(28, 28, 24, 0.12);
+}
+
+.reflection-card--stacked {
+  grid-area: result;
 }
 
 .ending-chart svg {
@@ -338,6 +352,14 @@ body.story-started {
   border-radius: 24px;
   background: rgba(255, 255, 255, 0.72);
   box-shadow: 0 18px 50px rgba(28, 28, 24, 0.08);
+}
+
+.compare-form--stacked,
+.reflection-card--stacked {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .compare-form h3,
@@ -357,7 +379,7 @@ body.story-started {
 
 .compare-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.55rem;
   margin: 0.85rem 0;
 }
@@ -389,11 +411,6 @@ body.story-started {
   color: #fff;
   font-weight: 800;
   cursor: pointer;
-}
-
-.reflection-card {
-  position: sticky;
-  top: 1rem;
 }
 
 .reflection-label {
